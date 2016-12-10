@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - project@localhost" uuid="dc0daf09-4f0a-42f0-9bb4-f77356ac976c">
+    <database-info product="MySQL" version="5.7.11-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="project"/>
+    <table name="albums" schema="" catalog="project" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="artist_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_5aofrs0anyybjrjt7w5teb8p9" columns="artist_id" ref-table="musicartists" ref-schema="" ref-catalog="project" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_5aofrs0anyybjrjt7w5teb8p9" unique="false" columns="artist_id"/>
+    </table>
+    <table name="artistphotos" schema="" catalog="project" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="path" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="artist_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_kk6wdo9j3koqc85lp2njw9sx4" columns="artist_id" ref-table="musicartists" ref-schema="" ref-catalog="project" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_kk6wdo9j3koqc85lp2njw9sx4" unique="false" columns="artist_id"/>
+    </table>
+    <table name="funnyimages" schema="" catalog="project" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="path" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+    <table name="musicartists" schema="" catalog="project" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="summary" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="url" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="user_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_5aofrs0anyybjrjt7w5teb8p9" table="albums" schema="" catalog="project" columns="artist_id"/>
+      <exported-key name="FK_kk6wdo9j3koqc85lp2njw9sx4" table="artistphotos" schema="" catalog="project" columns="artist_id"/>
+      <exported-key name="FK_1d4yh24iyjbgjodskqc0qc45w" table="top_albums" schema="" catalog="project" columns="artist_id"/>
+      <exported-key name="FK_9iu48pvs2gsfoy2j35kg3tygc" table="top_tracks" schema="" catalog="project" columns="artist_id"/>
+      <exported-key name="FK_ijuxp6ydm9x44fubj67xgi0e3" table="tracks" schema="" catalog="project" columns="artist_id"/>
+      <index name="FK_2yi382e9r5q8m6s4pri9u411n" unique="false" columns="user_id"/>
+    </table>
+    <table name="top_albums" schema="" catalog="project" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="artist_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_1d4yh24iyjbgjodskqc0qc45w" columns="artist_id" ref-table="musicartists" ref-schema="" ref-catalog="project" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_1d4yh24iyjbgjodskqc0qc45w" unique="false" columns="artist_id"/>
+    </table>
+    <table name="top_tracks" schema="" catalog="project" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="lyrics" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="true" jdbcType="-1"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="artist_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_9iu48pvs2gsfoy2j35kg3tygc" columns="artist_id" ref-table="musicartists" ref-schema="" ref-catalog="project" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_9iu48pvs2gsfoy2j35kg3tygc" unique="false" columns="artist_id"/>
+    </table>
+    <table name="tracks" schema="" catalog="project" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="artist_id" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_ijuxp6ydm9x44fubj67xgi0e3" columns="artist_id" ref-table="musicartists" ref-schema="" ref-catalog="project" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK_ijuxp6ydm9x44fubj67xgi0e3" unique="false" columns="artist_id"/>
+    </table>
+    <table name="users" schema="" catalog="project" type="TABLE">
+      <column name="id" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="email" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="login" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+    </table>
+  </data-source>
+</component>
